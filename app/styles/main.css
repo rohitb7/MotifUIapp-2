@@ -1,0 +1,44 @@
+td,
+th {
+    border: .5px #ccc solid;
+    text-align: center
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.test {
+    margin-top: 300px;
+    position: relative;
+    left: 0;
+    right: 0;
+   
+}
+
+.myClass{
+     margin-bottom: 80px;
+}
+
+input[type="button"] {
+    float: right;
+    padding: 15px;
+}
+
+.clear{
+	clear:both;
+}
+
+
+.common{
+	display: block; width: 100%; border: 1px solid black;
+}
+
+
+.inputGroup{
+    margin-top: 30px;
+}

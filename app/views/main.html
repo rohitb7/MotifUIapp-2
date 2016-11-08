@@ -1,0 +1,69 @@
+<!--<html for 1st task>-->
+<!--<html for 1st task>-->
+<!--<html for 1st task>-->
+<div class="common">
+    <table class="table table-bordered col-sm-2 col-lg-4">
+        <tr>
+            <td>
+                <h4>Enter the number of Features (Rows):</h4>
+            </td>
+            <td>
+                <h4><input type="number" ng-model="rows" name="rows"></h4>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Enter the Privacy Level (Columns):</h4>
+            </td>
+            <td>
+                <h4><input type="number" ng-model="columns" name="rows"></h4>
+            </td>
+        </tr>
+    </table>
+    <table class="table  col-sm-2 col-lg-4">
+        <tbody style="margin: 15px; display: block; "> 
+            <th scope="col"> Feature / Privacy Level</th>
+            <th scope="col" ng-repeat=" i in privacyLevel"> {{i}}</th>
+            <tr ng-repeat="outerlist in list"> 
+          <td> <b>{{featureLevel[$index]}} </b></td> 
+                <td ng-repeat="innerlist in outerlist" style="margin: 15px; ">
+                    <input type="checkbox" ng-model="innerlist.selected " ng-click="isChecked(innerlist.selected, innerlist.id, outerlist) ">{{innerlist.id}}
+                </td><tr scope="col" ng-repeat=" p in FeatureLevel"> {{p}}</tr>
+            </tr>
+        </tbody>
+    </table>
+    <div class="clear"></div>
+</div>
+<div class="inputGroup">
+    <input type="button" ng-click="getSelectedCheckboxes(list,true)" value="Get Selected Privacy Ldevel" class="btn btn-default">
+    <input type="button" ng-click="makeAnList(rows,columns)" value="Submit" class="btn btn-default">
+</div>
+<!--<html for 2nd task>-->
+<!--<html for 2nd task>-->
+<!--<html for 2nd task>-->
+<div style="margin-top: 110px;" class="common">
+    <table class="table table-bordered col-sm-2 col-lg-4">
+        <tr>
+            <td>
+                <h4>Enter a starting color value :</h4>
+            </td>
+            <td>
+                <h4><input type="number" ng-model="start" name="start" max="15"></h4>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Enter the height or Width :</h4>
+            </td>
+            <td>
+                <h4><input type="number" ng-model="height" name="height"></h4>
+            </td>
+        </tr>
+    </table>
+    <div class="clear"></div>
+</div>
+<div class="inputGroup">
+    <input type="button" ng-click="drawSquares(start,height)" value="Submit" class="btn btn-default">
+</div>
+<div class="test" style="margin-top: 150px">
+</div>
