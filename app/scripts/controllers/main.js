@@ -1,10 +1,11 @@
 'use strict';
 
-var App = angular.module('zenfitsApp')
+var App = angular.module('motifApp')
     .controller('MainCtrl', ['$scope', '$http', '$filter', function($scope, $http, $filter) {
 
 
         /* // Sample json data which is generated from the  $scope.makeAnList function 3 rows X 3 columns
+                
                 $scope.list = {
                     "Feature 1": [
                         { id: 1, selected: false, level: 1 },
@@ -22,16 +23,17 @@ var App = angular.module('zenfitsApp')
                         { id: 3, selected: false, level: 3 },
                     ]
                 };
+
         */
 
         // function for <th> generation according to the columns required
-        $scope.getNumber = function(columns) {
+        $scope.getNumber = function(columns) { 
             $scope.privacyLevel = [];
             for (var i = 1; i <= columns; i++) {
                 var level = "Privacy level " + i;
                 $scope.privacyLevel.push(level);
             }
-        }
+        }//could have avoided like for Featurelevel
 
 
         // function to generate json data based on the user input of rows and columns
@@ -66,6 +68,9 @@ var App = angular.module('zenfitsApp')
 
 
 
+
+
+
         // Recursive function for printing values to console
         // Will return all the checkboxed which are ture
         $scope.getSelectedCheckboxes = function(o, search) { // search == true always
@@ -84,14 +89,16 @@ var App = angular.module('zenfitsApp')
         }
 
 
+
+
         // function to check according to the given conditions for the checkboxes 
         $scope.isChecked = function(selected, id, innerlist) {
             if (selected == true) {
-                for (var i = id; i < innerlist.length; i++) {
+                for (var i = id; i < innerlist.length; i++) { // check right 
                     innerlist[i].selected = true;
                 }
             } else {
-                for (var i = id - 1; i >= 0; i--) {
+                for (var i = id - 1; i >= 0; i--) { // uncheck left 
                     innerlist[i].selected = false;
                 }
             }
@@ -115,18 +122,18 @@ var App = angular.module('zenfitsApp')
             var stack = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
             while (start <= 15) {
                 var popedVal = stack.pop();
-                var greyCode = "#" + popedVal + popedVal + popedVal;
-                myObjForValues[start] = greyCode;
+                var greyCode = "#" + popedVal + popedVal + popedVal; // making #AAA, #BBB etc 
+                myObjForValues[start] = greyCode;   // all greycode wrt its value in an obj 
                 start++;
             }
             //console.log(myObjForValues);
             var varyingHeight = height * (15 - copyOfStart + 1);
             
-            for (var i = 15; i >= copyOfStart; i--) { // closure for retaining the values
+            for (var i = 15; i >= copyOfStart; i--) { // closure for retaining the values/ not needed as such
                 (function(i) {
-                    var div = $("<div></div>");
-                    var backGroundColor = myObjForValues[i];
-                    div.css({
+                    var div = $("<div></div>"); // creating a div for every loop
+                    var backGroundColor = myObjForValues[i]; // getting respective values from hashtable/obj
+                    div.css({       // assigning CSS properties after every loop
                         "position": "absolute",
                         "margin": "auto",
                         "left": 0,
@@ -139,30 +146,17 @@ var App = angular.module('zenfitsApp')
                         "class": "myClass" 
                     })
                     //console.log(varyingHeight);
-                    var test = $('.test');
-                    div.appendTo(test);
-                    varyingHeight = varyingHeight - height;
+                    var test = $('.test'); // getting test div from DOM
+                    div.appendTo(test);     //appending to test
+                    varyingHeight = varyingHeight - height; // decreasing height for every div
                 }(i));
 
             }
 
         }
 
-        $scope.drawSquares(0, 8);
+        $scope.drawSquares(0, 8); // Initial function load
     }]);
 
-        //.css({"background-color": "yellow", "font-size": "200%"});
-        //drawSquares(0, 8);
-        //drawSquares(10,25) 
-        /*
-        div.css({ position: "absolute" });
-        div.css({ margin: "auto" });
-        div.css({ left: 0 });
-        div.css({ top: 0 });
-        div.css({ right: 0 });
-        div.css({ bottom: 0 });
-        div.css({ class: "myClass" });
-        div.css({ backgroundColor: backGroundColor });
-        div.height(varyingHeight);
-        div.width(varyingHeight);*/
+
 
